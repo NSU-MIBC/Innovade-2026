@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIBC | Innovade</title>
+    <title>SMART Presents INNOVADE | MIBC</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy-dark: #0a192f;
-            --accent-blue: #00d4ff;
-            --accent-green: #39ff14;
-            --text-white: #e6f1ff;
+            --navy-dark: #0a192f; /* */
+            --navy-light: #112240; /* */
+            --accent-blue: #00d4ff; /* */
+            --accent-green: #39ff14; /* */
+            --text-white: #e6f1ff; /* */
         }
 
         * {
@@ -21,21 +22,21 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--navy-dark);
-            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
-            background-size: 40px 40px;
+            background-color: var(--navy-dark); /* */
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0); /* */
+            background-size: 40px 40px; /* */
             color: var(--text-white);
-            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Top Left Circular Logo */
+        /* Top Left Circular MIBC Logo */
         .header-nav {
             padding: 20px 5%;
-            display: flex;
-            align-items: center;
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 100;
         }
 
         .club-logo {
@@ -47,71 +48,85 @@
             filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
         }
 
-        /* Main Design Container */
-        .hero-container {
+        /* Main Hero Section */
+        .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
-            background: linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, var(--navy-dark) 100%);
+            background: linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, var(--navy-dark) 100%); /* */
+            padding: 0 5%;
+        }
+
+        .presenter-container {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .smart-logo {
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 10px;
         }
 
         .presents-text {
             text-transform: uppercase;
             letter-spacing: 5px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: rgba(255,255,255,0.6);
-            margin-bottom: 10px;
         }
 
-        /* Title with "O" Replacement */
         .main-title {
-            font-size: clamp(3rem, 10vw, 7rem);
+            font-size: clamp(3.5rem, 12vw, 8.5rem);
             font-weight: 900;
-            letter-spacing: -2px;
             color: var(--accent-blue);
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+            line-height: 0.9;
+            letter-spacing: -2px;
+            filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
         }
 
-        .main-title span { color: var(--text-white); } /* The "O" */
+        .main-title span {
+            color: var(--text-white);
+        }
 
-        /* Slogan Section */
-        .slogan-container {
+        .slogan-row {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            max-width: 900px;
-            margin-top: 10px;
+            max-width: 1100px;
+            margin-top: 15px;
+            padding: 0 20px;
         }
 
         .slogan {
-            color: var(--accent-green);
-            font-style: italic;
+            color: var(--accent-green); /* */
             font-weight: 700;
             text-transform: uppercase;
-            font-size: clamp(0.6rem, 2vw, 1.2rem);
+            font-size: clamp(0.7rem, 2vw, 1.4rem);
+            font-style: italic;
             letter-spacing: 1px;
         }
 
-        /* Sponsors Grid (Matching Image Layout) */
-        .sponsors-grid {
+        /* Sponsors Layout */
+        .sponsors-footer {
+            margin-top: 100px;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 40px;
+            gap: 60px;
             width: 100%;
-            max-width: 1000px;
-            margin-top: 80px;
+            max-width: 1100px;
             align-items: end;
         }
 
-        .sponsor-item { display: flex; flex-direction: column; align-items: center; }
+        .sponsor-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
         .sponsor-label {
             font-size: 0.7rem;
@@ -121,14 +136,17 @@
             margin-bottom: 15px;
         }
 
-        .sponsor-img {
-            max-width: 150px;
-            height: auto;
-            filter: brightness(0.9);
-            transition: transform 0.3s;
+        .sponsor-image {
+            max-width: 180px;
+            max-height: 90px;
+            object-fit: contain;
+            filter: brightness(1.1);
         }
 
-        .sponsor-img:hover { transform: scale(1.1); }
+        @media (max-width: 768px) {
+            .sponsors-footer { grid-template-columns: 1fr; gap: 40px; }
+            .slogan-row { flex-direction: column; gap: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -137,33 +155,36 @@
         <img src="mibclog.jpg" alt="MIBC Logo" class="club-logo">
     </nav>
 
-    <div class="hero-container">
-        <p class="presents-text">Presents</p>
-        
+    <main class="hero">
+        <div class="presenter-container">
+            <img src="smart.png" alt="SMART" class="smart-logo">
+            <p class="presents-text">Presents</p>
+        </div>
+
         <h1 class="main-title">INN<span>O</span>VADE</h1>
 
-        <div class="slogan-container">
+        <div class="slogan-row">
             <p class="slogan">Innovating Strategies</p>
             <p class="slogan">Elevating Trade</p>
         </div>
 
-        <div class="sponsors-grid">
-            <div class="sponsor-item">
+        <div class="sponsors-footer">
+            <div class="sponsor-box">
                 <p class="sponsor-label">Powered By</p>
-                <img src="sponsor1.png" alt="Sponsor 1" class="sponsor-img">
-            </div>
-            
-            <div class="sponsor-item">
-                <p class="sponsor-label">Co-Sponsored By</p>
-                <img src="sponsor2.png" alt="Sponsor 2" class="sponsor-img">
+                <img src="Novoair.png" alt="Novoair" class="sponsor-image">
             </div>
 
-            <div class="sponsor-item">
+            <div class="sponsor-box">
+                <p class="sponsor-label">Co-Powered By</p>
+                <img src="polar.jpeg" alt="Polar" class="sponsor-image">
+            </div>
+
+            <div class="sponsor-box">
                 <p class="sponsor-label">Driven By</p>
-                <img src="sponsor3.png" alt="Sponsor 3" class="sponsor-img">
+                <img src="Yamaha.png" alt="Yamaha" class="sponsor-image">
             </div>
         </div>
-    </div>
+    </main>
 
 </body>
 </html>
