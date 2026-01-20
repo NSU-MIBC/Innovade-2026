@@ -8,7 +8,6 @@
     <style>
         :root {
             --navy-dark: #0a192f;
-            --navy-light: #112240;
             --accent-blue: #00d4ff;
             --accent-green: #39ff14;
             --text-white: #e6f1ff;
@@ -59,40 +58,71 @@
             align-items: center; text-align: center; padding: 0 5%;
         }
 
-        /* --- TITLE SPONSOR --- */
-        .presenter-section { margin-bottom: 5px; display: flex; flex-direction: column; align-items: center; }
+        /* --- UNIFIED SPONSOR BOXES (Exact Dimensions) --- */
         .universal-box {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px; height: 110px; width: 280px; display: flex; 
-            justify-content: center; align-items: center; padding: 10px; transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            height: 110px; 
+            width: 280px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            padding: 10px; 
+            transition: all 0.4s ease;
+            margin: 0 auto;
         }
-        .universal-box.smart-theme { border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
-        .universal-box:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.07); }
-        
-        .sponsor-img { max-height: 85px; max-width: 90%; object-fit: contain; }
-        .presents-text { text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
+
+        .universal-box.smart-theme {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .universal-box:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .universal-box.smart-theme:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 35px rgba(0, 212, 255, 0.4);
+        }
+
+        .sponsor-img {
+            max-height: 85px; 
+            max-width: 90%;
+            width: auto; 
+            object-fit: contain; 
+            filter: brightness(1.1);
+        }
 
         /* --- SPINNING GLOBE TITLE --- */
         .main-title {
-            font-size: clamp(3.5rem, 12vw, 8.5rem); font-weight: 900;
-            color: var(--accent-blue); line-height: 0.85; letter-spacing: -2px;
-            display: flex; align-items: center; justify-content: center;
+            font-size: clamp(3.5rem, 12vw, 8.5rem); 
+            font-weight: 900;
+            color: var(--accent-blue); 
+            line-height: 0.85; 
+            letter-spacing: -2px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
             filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
         }
 
-        /* The Globe replacing the "O" */
         .spinning-globe {
-            width: 0.8em; /* Responsive size based on text height */
-            height: 0.8em;
-            margin: 0 5px;
+            width: 0.85em; 
+            height: 0.85em;
+            margin: 0 10px;
             background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Blue_Marble_2002.png/1024px-Blue_Marble_2002.png');
-            background-size: cover;
+            background-size: 200% 100%;
             border-radius: 50%;
             display: inline-block;
-            box-shadow: inset -15px -15px 40px rgba(0,0,0,0.5), 
-                        inset 10px 10px 30px rgba(255,255,255,0.2),
-                        0 0 25px rgba(0, 212, 255, 0.4);
-            animation: rotateGlobe 12s linear infinite;
+            box-shadow: 
+                inset -20px -20px 50px rgba(0,0,0,0.8), 
+                inset 10px 10px 30px rgba(255,255,255,0.2),
+                0 0 25px rgba(0, 212, 255, 0.5);
+            animation: rotateGlobe 15s linear infinite;
         }
 
         @keyframes rotateGlobe {
@@ -100,17 +130,20 @@
             to { background-position: 200% 0; }
         }
 
-        /* --- Rest of Design --- */
+        /* --- Layout Spacing --- */
+        .presenter-section { margin-bottom: 5px; display: flex; flex-direction: column; align-items: center; }
+        .presents-text { text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
+
         .slogan-row { display: flex; justify-content: space-between; width: 100%; max-width: 1100px; margin-top: 5px; padding: 0 10px; }
         .slogan { color: var(--accent-green); font-weight: 700; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.3rem); font-style: italic; }
 
         .sponsors-grid { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; max-width: 1100px; }
-        .sponsor-item { display: flex; flex-direction: column; align-items: center; }
-        .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
+        .sponsor-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-bottom: 12px; width: 100%; }
 
         @media (max-width: 768px) {
-            .sponsors-grid { grid-template-columns: 1fr; }
-            .slogan-row { flex-direction: column; }
+            .sponsors-grid { grid-template-columns: 1fr; gap: 20px; }
+            .slogan-row { flex-direction: column; gap: 5px; }
             .universal-box { width: 100%; max-width: 280px; }
         }
     </style>
@@ -146,15 +179,23 @@
         <div class="sponsors-grid">
             <div class="sponsor-item">
                 <p class="label-text">Powered By</p>
-                <div class="universal-box"><img src="NOVOAIRlog.png" class="sponsor-img"></div>
+                <div class="universal-box">
+                    <img src="NOVOAIRlog.png" alt="Novoair" class="sponsor-img">
+                </div>
             </div>
+
             <div class="sponsor-item">
                 <p class="label-text">Co-Powered By</p>
-                <div class="universal-box"><img src="polar.png" class="sponsor-img"></div>
+                <div class="universal-box">
+                    <img src="polar.png" alt="Polar" class="sponsor-img">
+                </div>
             </div>
+
             <div class="sponsor-item">
                 <p class="label-text">Driven By</p>
-                <div class="universal-box"><img src="Yamaha.png" class="sponsor-img"></div>
+                <div class="universal-box">
+                    <img src="Yamaha.png" alt="Yamaha" class="sponsor-img">
+                </div>
             </div>
         </div>
     </main>
