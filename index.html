@@ -76,9 +76,9 @@
             align-items: center; text-align: center; padding: 0 5%;
         }
 
-        /* --- TITLE SPONSOR (Now same size as others) --- */
+        /* --- TITLE SPONSOR (Matched Size & Reduced Spacing) --- */
         .presenter-container {
-            margin-bottom: 25px;
+            margin-bottom: 10px; /* Reduced distance to title */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -86,30 +86,32 @@
 
         .title-sponsor-wrapper {
             background: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--accent-blue);
+            border: 1px solid var(--accent-blue); /* Thinner border to match others */
             border-radius: 12px;
-            height: 110px; /* Same height as secondary sponsors */
-            padding: 15px 35px;
+            height: 110px; 
+            width: 280px; /* Specific width so the border looks the same as the ones below */
+            padding: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 10px;
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.25);
+            margin-bottom: 5px; /* Reduced distance to "Presents" */
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
             transition: all 0.4s ease;
         }
 
         .title-sponsor-wrapper:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 35px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .smart-logo {
-            max-height: 70px; /* Same max-height as secondary logos */
+            max-height: 70px; /* Identical size to secondary logos */
             width: auto;
             object-fit: contain;
         }
 
-        .presents-text { text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        .presents-text { text-transform: uppercase; letter-spacing: 5px; font-size: 0.75rem; color: rgba(255,255,255,0.6); }
 
         /* Main Title & Slogans */
         .main-title {
@@ -119,21 +121,30 @@
         }
         .main-title span { color: var(--text-white); }
 
-        .slogan-row { display: flex; justify-content: space-between; width: 100%; max-width: 1100px; margin-top: 15px; }
+        .slogan-row { display: flex; justify-content: space-between; width: 100%; max-width: 1100px; margin-top: 5px; } /* Tightened spacing */
         .slogan { color: var(--accent-green); font-weight: 700; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.4rem); font-style: italic; }
 
-        /* Secondary Sponsors Grid */
-        .sponsors-footer { margin-top: 80px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; width: 100%; max-width: 1100px; }
-        .sponsor-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-bottom: 35px; }
+        /* Secondary Sponsors Grid (Tightened Spacing) */
+        .sponsors-footer { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; max-width: 1100px; }
+        
+        .sponsor-label { 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            color: rgba(255,255,255,0.4); 
+            margin-bottom: 15px; /* Reduced distance from label to box */
+        }
+
         .sponsor-logo-wrapper {
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px; height: 110px; display: flex; justify-content: center; align-items: center; padding: 15px;
             transition: all 0.3s ease;
         }
+
         .sponsor-logo-wrapper:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.3); }
         .sponsor-image { max-height: 70px; object-fit: contain; filter: brightness(1.1); }
 
-        @media (max-width: 768px) { .sponsors-footer { grid-template-columns: 1fr; } .slogan-row { flex-direction: column; gap: 10px; } }
+        @media (max-width: 768px) { .sponsors-footer { grid-template-columns: 1fr; } .slogan-row { flex-direction: column; gap: 5px; } .title-sponsor-wrapper { width: 100%; } }
     </style>
 </head>
 <body>
