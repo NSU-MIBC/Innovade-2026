@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Colors from your original design */
             --navy-dark: #0a192f;
             --navy-light: #112240;
             --accent-blue: #00d4ff;
@@ -23,28 +24,18 @@
             overflow-x: hidden;
         }
 
-        /* --- Background Layers --- */
+        /* --- Animated Mesh Background --- */
         .mesh-gradient {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-            background: var(--navy-dark);
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2; overflow: hidden; background: var(--navy-dark);
         }
 
         .blob {
-            position: absolute;
-            width: 600px;
-            height: 600px;
+            position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(0, 212, 255, 0.12) 0%, transparent 70%);
-            filter: blur(80px);
-            border-radius: 50%;
-            animation: move 20s infinite alternate;
+            filter: blur(80px); border-radius: 50%; animation: move 20s infinite alternate;
         }
-
         .blob-1 { top: -10%; left: -10%; animation-duration: 25s; }
         .blob-2 { bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(57, 255, 20, 0.08) 0%, transparent 70%); animation-duration: 30s; }
         .blob-3 { top: 40%; left: 30%; animation-duration: 20s; }
@@ -54,16 +45,9 @@
             to { transform: translate(100px, 50px) scale(1.2); }
         }
 
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        /* --- Header & MIBC Logo --- */
+        /* --- Header --- */
         .header-nav { padding: 20px 5%; position: absolute; top: 0; left: 0; z-index: 100; }
         .club-logo {
             height: 65px; width: 65px; border-radius: 50%; object-fit: cover;
@@ -76,85 +60,68 @@
             align-items: center; text-align: center; padding: 0 5%;
         }
 
-        /* --- TITLE SPONSOR (Matched Size & Reduced Spacing) --- */
-        .presenter-container {
-            margin-bottom: 10px; /* Reduced distance to title */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .title-sponsor-wrapper {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--accent-blue); /* Thinner border to match others */
+        /* --- UNIFIED SPONSOR BOXES (Exact Same Height & Width) --- */
+        .universal-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
+            /* YOU REQUESTED: EXACT SAME DIMENSIONS */
             height: 110px; 
-            width: 280px; /* Specific width so the border looks the same as the ones below */
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 5px; /* Reduced distance to "Presents" */
+            width: 280px; 
+            display: flex; justify-content: center; align-items: center;
+            padding: 15px; transition: all 0.4s ease;
+        }
+
+        /* SMART Box (Same size, but keeps blue border/glow) */
+        .universal-box.smart-theme {
+            border-color: var(--accent-blue);
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-            transition: all 0.4s ease;
         }
 
-        .title-sponsor-wrapper:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
-            background: rgba(255, 255, 255, 0.08);
+        .universal-box:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .smart-logo {
-            max-height: 70px; /* Identical size to secondary logos */
-            width: auto;
-            object-fit: contain;
+        .universal-box.smart-theme:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 35px rgba(0, 212, 255, 0.4);
         }
 
-        .presents-text { text-transform: uppercase; letter-spacing: 5px; font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+        .sponsor-img {
+            max-height: 70px; width: auto; object-fit: contain; filter: brightness(1.1);
+        }
 
-        /* Main Title & Slogans */
+        /* --- Layout Spacing --- */
+        .presenter-section { margin-bottom: 8px; display: flex; flex-direction: column; align-items: center; }
+        .presents-text { text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
+
         .main-title {
             font-size: clamp(3.5rem, 12vw, 8.5rem); font-weight: 900;
-            color: var(--accent-blue); line-height: 0.9; letter-spacing: -2px;
+            color: var(--accent-blue); line-height: 0.85; letter-spacing: -2px;
             filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
         }
         .main-title span { color: var(--text-white); }
 
-        .slogan-row { display: flex; justify-content: space-between; width: 100%; max-width: 1100px; margin-top: 5px; } /* Tightened spacing */
-        .slogan { color: var(--accent-green); font-weight: 700; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.4rem); font-style: italic; }
+        .slogan-row { display: flex; justify-content: space-between; width: 100%; max-width: 1100px; margin-top: 5px; padding: 0 10px; }
+        .slogan { color: var(--accent-green); font-weight: 700; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.3rem); font-style: italic; }
 
-        /* Secondary Sponsors Grid (Tightened Spacing) */
-        .sponsors-footer { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; max-width: 1100px; }
-        
-        .sponsor-label { 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            color: rgba(255,255,255,0.4); 
-            margin-bottom: 15px; /* Reduced distance from label to box */
+        .sponsors-grid { margin-top: 35px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; max-width: 1100px; }
+        .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
+
+        @media (max-width: 768px) {
+            .sponsors-grid { grid-template-columns: 1fr; gap: 20px; }
+            .slogan-row { flex-direction: column; gap: 5px; }
+            .universal-box { width: 100%; }
         }
-
-        .sponsor-logo-wrapper {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px; height: 110px; display: flex; justify-content: center; align-items: center; padding: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .sponsor-logo-wrapper:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.3); }
-        .sponsor-image { max-height: 70px; object-fit: contain; filter: brightness(1.1); }
-
-        @media (max-width: 768px) { .sponsors-footer { grid-template-columns: 1fr; } .slogan-row { flex-direction: column; gap: 5px; } .title-sponsor-wrapper { width: 100%; } }
     </style>
 </head>
 <body>
 
     <div class="mesh-gradient">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+        <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
     </div>
-
     <div id="particles-js"></div>
 
     <nav class="header-nav">
@@ -162,9 +129,9 @@
     </nav>
 
     <main class="hero">
-        <div class="presenter-container">
-            <div class="title-sponsor-wrapper">
-                <img src="smart.jpg" alt="SMART" class="smart-logo">
+        <div class="presenter-section">
+            <div class="universal-box smart-theme">
+                <img src="smart.png" alt="SMART" class="sponsor-img">
             </div>
             <p class="presents-text">Presents</p>
         </div>
@@ -176,18 +143,26 @@
             <p class="slogan">Elevating Trade</p>
         </div>
 
-        <div class="sponsors-footer">
-            <div class="sponsor-box">
-                <p class="sponsor-label">Powered By</p>
-                <div class="sponsor-logo-wrapper"><img src="Novoair.png" class="sponsor-image"></div>
+        <div class="sponsors-grid">
+            <div class="sponsor-item">
+                <p class="label-text">Powered By</p>
+                <div class="universal-box">
+                    <img src="NOVOAIRlog.png" alt="Novoair" class="sponsor-img">
+                </div>
             </div>
-            <div class="sponsor-box">
-                <p class="sponsor-label">Co-Powered By</p>
-                <div class="sponsor-logo-wrapper"><img src="polar.jpeg" class="sponsor-image"></div>
+
+            <div class="sponsor-item">
+                <p class="label-text">Co-Powered By</p>
+                <div class="universal-box">
+                    <img src="polar.png" alt="Polar" class="sponsor-img">
+                </div>
             </div>
-            <div class="sponsor-box">
-                <p class="sponsor-label">Driven By</p>
-                <div class="sponsor-logo-wrapper"><img src="Yamaha.png" class="sponsor-image"></div>
+
+            <div class="sponsor-item">
+                <p class="label-text">Driven By</p>
+                <div class="universal-box">
+                    <img src="Yamaha.png" alt="Yamaha" class="sponsor-image sponsor-img">
+                </div>
             </div>
         </div>
     </main>
@@ -196,13 +171,10 @@
     <script>
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 80 },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.2 },
-                "size": { "value": 3 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#00d4ff", "opacity": 0.2, "width": 1 },
-                "move": { "enable": true, "speed": 1.5 }
+                "number": { "value": 80 }, "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" }, "opacity": { "value": 0.2 },
+                "size": { "value": 3 }, "line_linked": { "enable": true, "distance": 150, "color": "#00d4ff", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.2 }
             },
             "interactivity": { "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } },
             "retina_detect": true
