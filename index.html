@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Colors from your original design */
             --navy-dark: #0a192f;
             --navy-light: #112240;
             --accent-blue: #00d4ff;
@@ -30,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* Top Left Circular Logo */
+        /* Top Left Circular MIBC Logo */
         .header-nav {
             padding: 20px 5%;
             position: absolute;
@@ -48,7 +49,7 @@
             filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
         }
 
-        /* Main Hero Section */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -60,17 +61,36 @@
             padding: 0 5%;
         }
 
+        /* --- UPDATED: Title Sponsor Styling (SMART) --- */
         .presenter-container {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
+        .title-sponsor-wrapper {
+            background: rgba(255, 255, 255, 0.05); /* Light glass effect */
+            border: 2px solid var(--accent-blue); /* Thicker blue border to stand out */
+            border-radius: 15px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.25); /* Stronger glow for importance */
+            transition: all 0.3s ease;
+        }
+
+        .title-sponsor-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(0, 212, 255, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
         .smart-logo {
-            max-width: 140px;
+            max-width: 150px;
             height: auto;
-            margin-bottom: 10px;
         }
 
         .presents-text {
@@ -80,6 +100,7 @@
             color: rgba(255,255,255,0.6);
         }
 
+        /* Main Title Styling */
         .main-title {
             font-size: clamp(3.5rem, 12vw, 8.5rem);
             font-weight: 900;
@@ -89,9 +110,7 @@
             filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
         }
 
-        .main-title span {
-            color: var(--text-white);
-        }
+        .main-title span { color: var(--text-white); }
 
         .slogan-row {
             display: flex;
@@ -111,15 +130,15 @@
             letter-spacing: 1px;
         }
 
-        /* --- UPDATED: Sponsors Layout for perfect alignment --- */
+        /* Secondary Sponsors Alignment */
         .sponsors-footer {
-            margin-top: 100px;
+            margin-top: 80px;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 40px;
             width: 100%;
             max-width: 1100px;
-            align-items: start; /* Aligns the labels at the top */
+            align-items: start;
         }
 
         .sponsor-box {
@@ -134,32 +153,24 @@
             letter-spacing: 3px;
             color: rgba(255,255,255,0.4);
             margin-bottom: 20px;
-            height: 15px; /* Ensures labels are at same height */
         }
 
-        /* Logo container with border to separate from background */
         .sponsor-logo-wrapper {
             background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border for secondary sponsors */
             border-radius: 12px;
             padding: 15px 25px;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 110px; /* Fixed height forces all logos to be at same level */
+            height: 110px;
             transition: all 0.3s ease;
-        }
-
-        .sponsor-logo-wrapper:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: var(--accent-blue);
-            transform: translateY(-5px);
         }
 
         .sponsor-image {
             max-width: 100%;
-            max-height: 70px; /* Uniform height for all logos */
+            max-height: 70px;
             width: auto;
             object-fit: contain;
             filter: brightness(1.1);
@@ -180,7 +191,9 @@
 
     <main class="hero">
         <div class="presenter-container">
-            <img src="smart.png" alt="SMART" class="smart-logo">
+            <div class="title-sponsor-wrapper">
+                <img src="smart.png" alt="SMART" class="smart-logo">
+            </div>
             <p class="presents-text">Presents</p>
         </div>
 
