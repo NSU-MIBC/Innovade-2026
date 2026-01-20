@@ -96,4 +96,108 @@
 
         .main-title {
             font-size: clamp(3.5rem, 12vw, 8.5rem); font-weight: 900;
-            color: var(--accent-blue);
+            color: var(--accent-blue); line-height: 0.9; letter-spacing: -2px;
+            filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
+        }
+        .main-title span { color: var(--text-white); }
+
+        .slogan-row { display: flex; justify-content: space-between; width: 100%; max-width: 1100px; margin-top: 15px; }
+        .slogan { color: var(--accent-green); font-weight: 700; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.4rem); font-style: italic; }
+
+        /* --- UPDATED: Spacing for Secondary Sponsors --- */
+        .sponsors-footer { margin-top: 80px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; width: 100%; max-width: 1100px; }
+
+        .sponsor-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 35px; /* Increased to prevent overlap on hover */
+            height: 15px;
+        }
+
+        .sponsor-logo-wrapper {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px; height: 110px; display: flex; justify-content: center; align-items: center; padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-logo-wrapper:hover { 
+            transform: translateY(-8px); 
+            background: rgba(255, 255, 255, 0.07); 
+            border-color: rgba(255, 255, 255, 0.3); 
+        }
+
+        .sponsor-image { max-height: 70px; object-fit: contain; filter: brightness(1.1); }
+
+        @media (max-width: 768px) { .sponsors-footer { grid-template-columns: 1fr; } .slogan-row { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+    <div class="mesh-gradient">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="particles-js"></div>
+
+    <nav class="header-nav">
+        <img src="mibclog.jpg" alt="MIBC Logo" class="club-logo">
+    </nav>
+
+    <main class="hero">
+        <div class="presenter-container">
+            <div class="title-sponsor-wrapper">
+                <img src="smart.png" alt="SMART" class="smart-logo">
+            </div>
+            <p class="presents-text">Presents</p>
+        </div>
+
+        <h1 class="main-title">INN<span>O</span>VADE</h1>
+
+        <div class="slogan-row">
+            <p class="slogan">Innovating Strategies</p>
+            <p class="slogan">Elevating Trade</p>
+        </div>
+
+        <div class="sponsors-footer">
+            <div class="sponsor-box">
+                <p class="sponsor-label">Powered By</p>
+                <div class="sponsor-logo-wrapper"><img src="Novoair.png" class="sponsor-image"></div>
+            </div>
+            <div class="sponsor-box">
+                <p class="sponsor-label">Co-Powered By</p>
+                <div class="sponsor-logo-wrapper"><img src="polar.jpeg" class="sponsor-image"></div>
+            </div>
+            <div class="sponsor-box">
+                <p class="sponsor-label">Driven By</p>
+                <div class="sponsor-logo-wrapper"><img src="Yamaha.png" class="sponsor-image"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00d4ff", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5 }
+            },
+            "interactivity": {
+                "events": { 
+                    "onhover": { "enable": false }, /* Interaction removed to boost performance */
+                    "onclick": { "enable": false }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
