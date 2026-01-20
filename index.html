@@ -93,11 +93,21 @@
             object-fit: contain; filter: brightness(1.1);
         }
 
-        /* --- REALISTIC SPINNING GLOBE --- */
+        /* --- REALISTIC SPINNING GLOBE & GRADIENT TITLE --- */
         .main-title {
-            font-size: clamp(3.5rem, 12vw, 8.5rem); font-weight: 900;
-            color: var(--accent-blue); line-height: 0.85; letter-spacing: -2px;
-            display: flex; align-items: center; justify-content: center;
+            font-size: clamp(3.5rem, 12vw, 8.5rem); 
+            font-weight: 900;
+            line-height: 0.85; 
+            letter-spacing: -2px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            /* New Gradient Styles */
+            background-image: linear-gradient(to bottom, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
             filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
         }
 
@@ -106,7 +116,6 @@
             border-radius: 50%; display: inline-block;
             position: relative; overflow: hidden;
             background-color: #0d1b2a;
-            /* Pointing to your local earth.png file as requested */
             background-image: url('earth.png');
             background-size: 210% 100%;
             /* 3D sphere lighting effects */
