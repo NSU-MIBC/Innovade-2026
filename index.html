@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colors from your original design */
             --navy-dark: #0a192f;
             --accent-blue: #00d4ff;
+            --accent-green: #39ff14;
             --text-white: #e6f1ff;
         }
 
@@ -22,47 +22,148 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--navy-dark);
-            /* Subtle dot pattern */
-            background-image: 
-                radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
             background-size: 40px 40px;
             color: var(--text-white);
             min-height: 100vh;
         }
 
+        /* Top Left Circular Logo */
         .header-nav {
             padding: 20px 5%;
             display: flex;
             align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
-        /* --- UPDATED: Circular Logo Styling --- */
         .club-logo {
-            height: 65px; /* Size of the circle */
-            width: 65px;  /* Must match height for a perfect circle */
-            border-radius: 50%; /* This creates the circular shape */
-            object-fit: cover;  /* Ensures image fills the circle without distortion */
-            border: 2px solid var(--accent-blue); /* Optional: adds a thin blue ring */
+            height: 65px;
+            width: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-blue);
             filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
         }
 
-        .main-container {
+        /* Main Design Container */
+        .hero-container {
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
             background: linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, var(--navy-dark) 100%);
         }
+
+        .presents-text {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 10px;
+        }
+
+        /* Title with "O" Replacement */
+        .main-title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: var(--accent-blue);
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+        }
+
+        .main-title span { color: var(--text-white); } /* The "O" */
+
+        /* Slogan Section */
+        .slogan-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 10px;
+        }
+
+        .slogan {
+            color: var(--accent-green);
+            font-style: italic;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: clamp(0.6rem, 2vw, 1.2rem);
+            letter-spacing: 1px;
+        }
+
+        /* Sponsors Grid (Matching Image Layout) */
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 80px;
+            align-items: end;
+        }
+
+        .sponsor-item { display: flex; flex-direction: column; align-items: center; }
+
+        .sponsor-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 15px;
+        }
+
+        .sponsor-img {
+            max-width: 150px;
+            height: auto;
+            filter: brightness(0.9);
+            transition: transform 0.3s;
+        }
+
+        .sponsor-img:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <nav class="header-nav">
-            <img src="mibclog.jpg" alt="MIBC Logo" class="club-logo">
-        </nav>
+    <nav class="header-nav">
+        <img src="mibclog.jpg" alt="MIBC Logo" class="club-logo">
+    </nav>
+
+    <div class="hero-container">
+        <p class="presents-text">Presents</p>
         
+        <h1 class="main-title">INN<span>O</span>VADE</h1>
+
+        <div class="slogan-container">
+            <p class="slogan">Innovating Strategies</p>
+            <p class="slogan">Elevating Trade</p>
         </div>
+
+        <div class="sponsors-grid">
+            <div class="sponsor-item">
+                <p class="sponsor-label">Powered By</p>
+                <img src="sponsor1.png" alt="Sponsor 1" class="sponsor-img">
+            </div>
+            
+            <div class="sponsor-item">
+                <p class="sponsor-label">Co-Sponsored By</p>
+                <img src="sponsor2.png" alt="Sponsor 2" class="sponsor-img">
+            </div>
+
+            <div class="sponsor-item">
+                <p class="sponsor-label">Driven By</p>
+                <img src="sponsor3.png" alt="Sponsor 3" class="sponsor-img">
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
-
-
-
