@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* --- Animated Mesh Background --- */
+        /* --- Background Layers --- */
         .mesh-gradient {
             position: fixed;
             top: 0;
@@ -63,7 +63,7 @@
             z-index: -1;
         }
 
-        /* --- Header --- */
+        /* --- Header & MIBC Logo --- */
         .header-nav { padding: 20px 5%; position: absolute; top: 0; left: 0; z-index: 100; }
         .club-logo {
             height: 65px; width: 65px; border-radius: 50%; object-fit: cover;
@@ -76,43 +76,44 @@
             align-items: center; text-align: center; padding: 0 5%;
         }
 
-        /* --- UPDATED: Square Title Sponsor Styling --- */
+        /* --- BIG TITLE SPONSOR SECTION --- */
         .presenter-container {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
 
         .title-sponsor-wrapper {
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid var(--accent-blue);
-            border-radius: 20px; /* Slightly rounded square look */
-            width: 140px;  /* Equal width and height for a perfect square */
-            height: 140px; 
-            padding: 20px;
+            border-radius: 15px;
+            padding: 30px 60px; /* Large padding for a bigger feel */
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 15px;
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.25);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
             transition: all 0.4s ease;
+            max-width: 90%; /* Responsive width */
         }
 
         .title-sponsor-wrapper:hover {
-            transform: translateY(-5px) rotate(2deg); /* Subtle tilt on hover */
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 0 45px rgba(0, 212, 255, 0.5);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .smart-logo {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* Keeps the logo's aspect ratio inside the square */
+            max-width: 250px; /* Increased size significantly */
+            height: auto;
+            object-fit: contain;
         }
 
         .presents-text { text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
 
-        /* Main Title */
+        /* Main Title & Slogans */
         .main-title {
             font-size: clamp(3.5rem, 12vw, 8.5rem); font-weight: 900;
             color: var(--accent-blue); line-height: 0.9; letter-spacing: -2px;
@@ -123,7 +124,7 @@
         .slogan-row { display: flex; justify-content: space-between; width: 100%; max-width: 1100px; margin-top: 15px; }
         .slogan { color: var(--accent-green); font-weight: 700; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.4rem); font-style: italic; }
 
-        /* Secondary Sponsors */
+        /* Secondary Sponsors Grid */
         .sponsors-footer { margin-top: 80px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; width: 100%; max-width: 1100px; }
         .sponsor-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-bottom: 35px; }
         .sponsor-logo-wrapper {
@@ -134,7 +135,7 @@
         .sponsor-logo-wrapper:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.3); }
         .sponsor-image { max-height: 70px; object-fit: contain; filter: brightness(1.1); }
 
-        @media (max-width: 768px) { .sponsors-footer { grid-template-columns: 1fr; } .slogan-row { flex-direction: column; } }
+        @media (max-width: 768px) { .sponsors-footer { grid-template-columns: 1fr; } .slogan-row { flex-direction: column; gap: 10px; } }
     </style>
 </head>
 <body>
