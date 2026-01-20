@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colors sourced from your original design */
+            /* Colors from your original design */
             --navy-dark: #0a192f;
             --accent-blue: #00d4ff;
             --text-white: #e6f1ff;
@@ -22,7 +22,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--navy-dark);
-            /* The subtle dot pattern from your original file */
+            /* Subtle dot pattern */
             background-image: 
                 radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
             background-size: 40px 40px;
@@ -30,20 +30,22 @@
             min-height: 100vh;
         }
 
-        /* Top Left Logo Container */
         .header-nav {
             padding: 20px 5%;
             display: flex;
             align-items: center;
         }
 
+        /* --- UPDATED: Circular Logo Styling --- */
         .club-logo {
-            height: 60px; /* You can adjust this size */
-            width: auto;
-            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+            height: 65px; /* Size of the circle */
+            width: 65px;  /* Must match height for a perfect circle */
+            border-radius: 50%; /* This creates the circular shape */
+            object-fit: cover;  /* Ensures image fills the circle without distortion */
+            border: 2px solid var(--accent-blue); /* Optional: adds a thin blue ring */
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
         }
 
-        /* Full page gradient background */
         .main-container {
             height: 100vh;
             background: linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, var(--navy-dark) 100%);
@@ -61,5 +63,6 @@
 
 </body>
 </html>
+
 
 
