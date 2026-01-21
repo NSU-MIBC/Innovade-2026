@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy-dark: #0d1b2a;
+            --navy-dark: #0d1b2a; /* Lighter navy base */
             --accent-blue: #00d4ff;
             --accent-green: #39ff14;
             --text-white: #f0f5ff;
         }
 
-        /* --- Performance Reset --- */
+        /* --- Global Performance Fixes --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
         body {
@@ -28,88 +28,117 @@
             align-items: center;
         }
 
-        /* --- GPU Optimized Background --- */
+        /* --- Optimized Brighter Background --- */
         .mesh-gradient {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2; background: var(--navy-dark);
-            transform: translateZ(0); /* Force GPU */
+            transform: translateZ(0); 
         }
 
         .blob {
-            position: absolute; width: 80vw; height: 80vw;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.12) 0%, transparent 70%);
-            filter: blur(40px); /* Lower blur for speed */
+            position: absolute; width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, transparent 70%);
+            filter: blur(60px); 
             border-radius: 50%; 
             will-change: transform;
-            animation: moveBlobs 30s infinite alternate ease-in-out;
-            transform: translate3d(0,0,0); /* Hardware acceleration */
+            animation: moveBlobs 25s infinite alternate ease-in-out;
+            transform: translate3d(0,0,0);
         }
         .blob-1 { top: -10%; left: -10%; }
-        .blob-2 { bottom: -5%; right: -5%; background: radial-gradient(circle, rgba(57, 255, 20, 0.06) 0%, transparent 70%); animation-duration: 40s; }
+        .blob-2 { bottom: -5%; right: -5%; background: radial-gradient(circle, rgba(57, 255, 20, 0.1) 0%, transparent 70%); animation-duration: 35s; }
 
         @keyframes moveBlobs {
             from { transform: translate3d(0, 0, 0); }
-            to { transform: translate3d(40px, 30px, 0); }
+            to { transform: translate3d(50px, 30px, 0); }
         }
 
-        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.3; }
+        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.4; }
 
-        /* --- Layout --- */
+        /* --- FIXED CLUB LOGO SIZE --- */
+        .header-nav { 
+            position: fixed; /* Stays in place when scrolling */
+            top: 20px; 
+            left: 20px; 
+            z-index: 1000; 
+        }
+        .club-logo {
+            height: 60px; /* Precise size */
+            width: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-blue);
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+            object-fit: cover;
+        }
+
+        /* --- Hero Layout --- */
         .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 60px; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px; }
 
         .universal-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             height: 110px; width: 280px;
             display: flex; justify-content: center; align-items: center;
-            padding: 15px; margin: 0 auto;
-            transform: translateZ(0);
+            padding: 15px; transition: transform 0.3s ease;
+            margin: 0 auto;
         }
-        .universal-box.smart-theme { border-color: var(--accent-blue); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
+        .universal-box.smart-theme { border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
         .sponsor-img { max-height: 80px; max-width: 85%; object-fit: contain; }
 
-        /* --- Globe & Title (Optimized) --- */
+        /* --- BRIGHTENED GLOBE & TITLE --- */
         .main-title {
             font-size: clamp(2.8rem, 10vw, 8.5rem); font-weight: 900; line-height: 0.85; letter-spacing: -2px;
             display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(to bottom, #44e5ff, #0072ff);
+            background: linear-gradient(to bottom, #44e5ff, #0072ff); /* Bright cyan to blue gradient */
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+            filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.4));
         }
 
         .spinning-globe {
             width: 0.82em; height: 0.82em; margin: 0 8px; border-radius: 50%; display: inline-block;
             position: relative; overflow: hidden; background-color: #1a3a5f;
             background-image: url('earth.png'); background-size: 210% 100%;
-            box-shadow: inset -10px -10px 30px rgba(0,0,0,0.5), inset 10px 10px 20px rgba(255,255,255,0.2), 0 0 20px rgba(0, 212, 255, 0.3);
-            animation: rotateGlobeRealistic 30s linear infinite; /* Slower for performance */
+            /* Brightened light for landmass visibility */
+            box-shadow: 
+                inset -15px -15px 40px rgba(0,0,0,0.6), 
+                inset 15px 15px 30px rgba(255,255,255,0.3),
+                0 0 30px rgba(0, 212, 255, 0.5);
+            animation: rotateGlobeRealistic 30s linear infinite;
             transform: translate3d(0,0,0);
         }
         @keyframes rotateGlobeRealistic { from { background-position: 0 0; } to { background-position: 210% 0; } }
 
-        .slogan-container { width: 100%; display: flex; justify-content: flex-end; margin-top: 8px; max-width: 1000px; }
-        .single-slogan { color: var(--accent-green); font-weight: 900; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.3rem); font-style: italic; max-width: 450px; text-align: right; }
-
-        .sponsors-grid { margin-top: 35px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; width: 100%; }
-        .sponsor-item { display: flex; flex-direction: column; align-items: center; }
-        .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
-
-        /* --- Description --- */
-        .event-section { padding: 50px 0; width: 100%; display: flex; justify-content: center; }
-        .description-container {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px; padding: 40px; max-width: 850px; width: 100%;
-            display: flex; flex-direction: column; align-items: center;
+        .slogan-container { width: 100%; display: flex; justify-content: flex-end; margin-top: 10px; max-width: 1000px; }
+        .single-slogan { 
+            color: var(--accent-green); font-weight: 900; text-transform: uppercase; 
+            font-size: clamp(0.7rem, 2.2vw, 1.4rem); font-style: italic; 
+            max-width: 450px; text-align: right; 
         }
 
+        /* --- Sponsors Grid --- */
+        .sponsors-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; }
+        .sponsor-item { display: flex; flex-direction: column; align-items: center; }
+        .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+
+        /* --- Event Description --- */
+        .event-section { padding: 80px 0; width: 100%; display: flex; justify-content: center; }
+        .description-container {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 25px; padding: 45px; max-width: 900px; width: 100%;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .description-text { color: rgba(230, 241, 255, 0.9); font-size: 1rem; text-align: center; line-height: 1.8; }
+
+        /* --- Mobile Fixes --- */
         @media (max-width: 768px) {
-            .hero { padding-top: 100px; }
-            .presenter-section .universal-box { width: 210px; height: 82px; }
-            .sponsors-grid { display: flex; flex-direction: column; align-items: center; gap: 35px; }
+            .hero { padding-top: 120px; }
+            .header-nav { top: 15px; left: 15px; }
+            .club-logo { height: 50px; width: 50px; }
+            .presenter-section .universal-box { width: 210px; height: 85px; }
+            .sponsors-grid { display: flex; flex-direction: column; align-items: center; gap: 40px; }
             .slogan-container { justify-content: center; }
             .single-slogan { text-align: center; }
             .universal-box { width: 100%; max-width: 270px; }
@@ -137,32 +166,32 @@
 
         <div class="sponsors-grid">
             <div class="sponsor-item"><p class="label-text">Driven By</p><div class="universal-box"><img src="Yamaha.png" class="sponsor-img"></div></div>
-            <div class="sponsor-item"><p class="label-text">Co-Sponsored By</p><div class="universal-box"><img src="polar.png" class="sponsor-img"></div></div>
-            <div class="sponsor-item"><p class="label-text) ">Powered By</p><div class="universal-box"><img src="NOVOAIRlog.png" class="sponsor-img"></div></div>
+            <div class="sponsor-item"><p class="label-text">Co-Powered By</p><div class="universal-box"><img src="polar.png" class="sponsor-img"></div></div>
+            <div class="sponsor-item"><p class="label-text">Powered By</p><div class="universal-box"><img src="NOVOAIRlog.png" class="sponsor-img"></div></div>
         </div>
     </main>
 
     <section class="container event-section">
         <div class="description-container">
-            <h2 style="color:var(--accent-blue); margin-bottom: 20px; font-weight: 900; text-transform: uppercase;">Event Description</h2>
-            <p style="color: rgba(230,241,255,0.85); font-size: 0.95rem; text-align: center;">
-                NSU MIBC proudly unveils the nation's first-ever International Business based case competition. 
-                Shape the emerging leaders ready to redefine the world of business. Your moment to INNOVADE is here.
-            </p>
+            <h2 style="color:var(--accent-blue); margin-bottom: 25px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px;">Event Description</h2>
+            <div class="description-text">
+                <p style="margin-bottom: 20px;">NSU MIBC proudly unveils the nation's first-ever International Business based case competition - Smart Technologies Presents INNOVADE 2026, Driven by Yamaha, Co-Sponsored by Polar, and Powered by NOVOAIR.</p>
+                <p style="margin-bottom: 20px;">Through integration, acumen, and ambition, INNOVADE 2026 aims to shape the emerging leaders ready to redefine the world of business.</p>
+                <p style="font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 2px;">Your moment to INNOVADE is here.</p>
+            </div>
         </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Low particle count for mobile to save CPU
-        var pCount = window.innerWidth < 768 ? 20 : 50;
+        var pCount = window.innerWidth < 768 ? 25 : 55;
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": pCount }, 
                 "color": { "value": "#ffffff" },
-                "opacity": { "value": 0.1 },
+                "opacity": { "value": 0.15 },
                 "size": { "value": 2 },
-                "line_linked": { "enable": true, "distance": 140, "color": "#00d4ff", "opacity": 0.1, "width": 1 },
+                "line_linked": { "enable": true, "distance": 140, "color": "#00d4ff", "opacity": 0.15, "width": 1 },
                 "move": { "enable": true, "speed": 1 }
             },
             "interactivity": { "events": { "onhover": { "enable": false } } },
