@@ -224,7 +224,8 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        var pCount = window.innerWidth < 768 ? 20 : 50;
+        /* --- INCREASED PARTICLE DENSITY --- */
+        var pCount = window.innerWidth < 768 ? 45 : 110; 
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": pCount, "density": { "enable": true, "value_area": 800 } },
@@ -240,4 +241,3 @@
     </script>
 </body>
 </html>
-
