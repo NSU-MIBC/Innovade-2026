@@ -55,7 +55,7 @@
 
         #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
-        /* --- HEADER NAVIGATION (Logo Left, Register Right) --- */
+        /* --- HEADER NAVIGATION --- */
         .header-nav { 
             position: fixed; 
             top: 20px; 
@@ -76,7 +76,6 @@
             object-fit: cover;
         }
 
-        /* --- TOP RIGHT REGISTER BUTTON --- */
         .btn-register {
             background: linear-gradient(135deg, var(--accent-blue), #0072ff);
             color: #fff;
@@ -102,17 +101,30 @@
         .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px; }
 
+        /* --- UPDATED SPONSOR BOXES WITH POP EFFECT --- */
         .universal-box {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             height: 110px; width: 280px;
             display: flex; justify-content: center; align-items: center;
-            padding: 15px; transition: transform 0.3s ease;
-            margin: 0 auto;
+            padding: 15px; margin: 0 auto;
+            /* Smooth bouncy transition */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
+
+        /* Hover & Active (Touch) States */
+        .universal-box:hover, .universal-box:active {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.3);
+        }
+
         .universal-box.smart-theme { border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
-        .sponsor-img { max-height: 80px; max-width: 85%; object-fit: contain; }
+        .sponsor-img { max-height: 80px; max-width: 85%; object-fit: contain; pointer-events: none; }
 
         /* --- Title & Globe --- */
         .main-title {
@@ -134,11 +146,7 @@
         @keyframes rotateGlobeRealistic { from { background-position: 0 0; } to { background-position: 210% 0; } }
 
         .slogan-container { width: 100%; display: flex; justify-content: flex-end; margin-top: 10px; max-width: 1000px; }
-        .single-slogan { 
-            color: var(--accent-green); font-weight: 900; text-transform: uppercase; 
-            font-size: clamp(0.7rem, 2.2vw, 1.3rem); font-style: italic; 
-            max-width: 450px; text-align: right; 
-        }
+        .single-slogan { color: var(--accent-green); font-weight: 900; text-transform: uppercase; font-size: clamp(0.7rem, 2.2vw, 1.3rem); font-style: italic; max-width: 450px; text-align: right; }
 
         /* --- Grid --- */
         .sponsors-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; }
@@ -227,4 +235,3 @@
     </script>
 </body>
 </html>
-
