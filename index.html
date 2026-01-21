@@ -146,7 +146,15 @@
         @keyframes rotateGlobeRealistic { from { background-position: 0 0; } to { background-position: 210% 0; } }
 
         .slogan-container { width: 100%; display: flex; justify-content: flex-end; margin-top: 10px; max-width: 1000px; }
-        .single-slogan { color: var(--accent-green); font-weight: 900; text-transform: uppercase; font-size: clamp(0.7rem, 2.2vw, 1.3rem); font-style: italic; max-width: 450px; text-align: right; }
+        
+        /* --- EDITED SLOGAN ALIGNMENT --- */
+        .single-slogan { 
+            color: var(--accent-green); font-weight: 900; text-transform: uppercase; 
+            font-size: clamp(0.7rem, 2.2vw, 1.3rem); font-style: italic; 
+            max-width: 260px; /* Reduced width to align with 'V' */
+            width: 100%;
+            text-align: right; 
+        }
 
         /* --- Grid --- */
         .sponsors-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; }
@@ -201,7 +209,7 @@
 
         <div class="sponsors-grid">
             <div class="sponsor-item"><p class="label-text">Driven By</p><div class="universal-box"><img src="Yamaha.png" class="sponsor-img"></div></div>
-            <div class="sponsor-item"><p class="label-text">Co-Sponsored By</p><div class="universal-box"><img src="polar.png" class="sponsor-img"></div></div>
+            <div class="sponsor-item"><p class="label-text">Co-Powered By</p><div class="universal-box"><img src="polar.png" class="sponsor-img"></div></div>
             <div class="sponsor-item"><p class="label-text">Powered By</p><div class="universal-box"><img src="NOVOAIRlog.png" class="sponsor-img"></div></div>
         </div>
     </main>
