@@ -10,7 +10,7 @@
             /* Colors sourced from your original design variables */
             --navy-dark: #0a192f;
             --accent-blue: #00d4ff;
-            --accent-green: #39ff14;
+            --accent-green: #39ff14; /* The bright green for the slogan */
             --text-white: #e6f1ff;
         }
 
@@ -102,7 +102,7 @@
             display: flex; 
             align-items: center; 
             justify-content: center;
-            /* New Gradient Styles */
+            /* Gradient Text Effect */
             background-image: linear-gradient(to bottom, #00c6ff, #0072ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -135,16 +135,25 @@
         .presenter-section { margin-bottom: 5px; display: flex; flex-direction: column; align-items: center; }
         .presents-text { text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
 
-        .slogan-row { display: flex; justify-content: space-between; width: 100%; max-width: 1100px; margin-top: 5px; padding: 0 10px; }
-        .slogan { color: var(--accent-green); font-weight: 700; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.4rem); font-style: italic; }
+        /* --- NEW SINGLE SLOGAN STYLE --- */
+        .single-slogan {
+            color: var(--accent-green); /* Bright green color */
+            font-weight: 900; /* Extra bold weight */
+            text-transform: uppercase;
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            font-style: italic; /* Italic style */
+            text-align: center; /* Centered horizontally */
+            margin-top: 15px;
+            letter-spacing: 1px;
+            width: 100%;
+        }
 
-        .sponsors-grid { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; max-width: 1100px; }
+        .sponsors-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; max-width: 1100px; }
         .sponsor-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
         .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-bottom: 12px; width: 100%; }
 
         @media (max-width: 768px) {
             .sponsors-grid { grid-template-columns: 1fr; gap: 20px; }
-            .slogan-row { flex-direction: column; gap: 5px; }
             .universal-box { width: 100%; max-width: 280px; }
         }
     </style>
@@ -172,10 +181,7 @@
             INN<span class="spinning-globe"></span>VADE
         </h1>
 
-        <div class="slogan-row">
-            <p class="slogan">Innovating Strategies</p>
-            <p class="slogan">Elevating Trade</p>
-        </div>
+        <p class="single-slogan">REDEFINING BUSINESS GLOBALLY</p>
 
         <div class="sponsors-grid">
             <div class="sponsor-item">
