@@ -105,7 +105,7 @@
         .slogan-container { 
             width: 100%; 
             display: flex; 
-            justify-content: flex-end; /* Desktop alignment under VADE */
+            justify-content: flex-end; 
             margin-top: 10px; 
             max-width: 1000px;
         }
@@ -115,7 +115,7 @@
             max-width: 450px; text-align: right; 
         }
 
-        /* --- Sponsors Grid (Swapped) --- */
+        /* --- Sponsors Grid --- */
         .sponsors-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; }
         .sponsor-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
         .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
@@ -155,9 +155,25 @@
         .description-text p { margin-bottom: 20px; }
         .description-text p:last-child { margin-bottom: 0; font-weight: 700; color: var(--text-white); }
 
-        /* --- MOBILE CENTERING FIXES --- */
+        /* --- MOBILE REFINEMENTS --- */
         @media (max-width: 768px) {
             .hero { padding-top: 120px; }
+            
+            /* Reduced Smart Sponsor Box for Mobile */
+            .presenter-section .universal-box {
+                width: 220px;
+                height: 85px;
+                margin-bottom: 5px;
+            }
+            .presenter-section .sponsor-img {
+                max-height: 55px;
+            }
+            .presents-text {
+                font-size: 0.6rem;
+                letter-spacing: 3px;
+                margin-bottom: 10px;
+            }
+
             .sponsors-grid { 
                 display: flex; 
                 flex-direction: column; 
@@ -212,7 +228,7 @@
                 <div class="universal-box"><img src="Yamaha.png" class="sponsor-img"></div>
             </div>
             <div class="sponsor-item">
-                <p class="label-text">Co-Sponsored By</p>
+                <p class="label-text">Co-Powered By</p>
                 <div class="universal-box"><img src="polar.png" class="sponsor-img"></div>
             </div>
             <div class="sponsor-item">
@@ -258,4 +274,3 @@
     </script>
 </body>
 </html>
-
