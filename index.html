@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy-dark: #0d1b2a; /* Lighter navy base */
+            --navy-dark: #0d1b2a;
             --accent-blue: #00d4ff;
             --accent-green: #39ff14;
             --text-white: #f0f5ff;
         }
 
-        /* --- Global Performance Fixes --- */
+        /* --- Global Reset & Speed --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
         body {
@@ -28,58 +28,59 @@
             align-items: center;
         }
 
-        /* --- Optimized Brighter Background --- */
+        /* --- GPU-Friendly Background --- */
         .mesh-gradient {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2; background: var(--navy-dark);
-            transform: translateZ(0); 
+            transform: translateZ(0); /* Hardware Acceleration */
         }
 
         .blob {
             position: absolute; width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, transparent 70%);
-            filter: blur(60px); 
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            filter: blur(50px); /* Lowered blur for performance */
             border-radius: 50%; 
             will-change: transform;
             animation: moveBlobs 25s infinite alternate ease-in-out;
             transform: translate3d(0,0,0);
         }
         .blob-1 { top: -10%; left: -10%; }
-        .blob-2 { bottom: -5%; right: -5%; background: radial-gradient(circle, rgba(57, 255, 20, 0.1) 0%, transparent 70%); animation-duration: 35s; }
+        .blob-2 { bottom: -5%; right: -5%; background: radial-gradient(circle, rgba(57, 255, 20, 0.08) 0%, transparent 70%); animation-duration: 35s; }
 
         @keyframes moveBlobs {
             from { transform: translate3d(0, 0, 0); }
-            to { transform: translate3d(50px, 30px, 0); }
+            to { transform: translate3d(40px, 20px, 0); }
         }
 
-        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.4; }
+        /* Particles container pinned to background */
+        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
-        /* --- FIXED CLUB LOGO SIZE --- */
+        /* --- TOP LEFT LOGO FIX --- */
         .header-nav { 
-            position: fixed; /* Stays in place when scrolling */
+            position: fixed; 
             top: 20px; 
             left: 20px; 
             z-index: 1000; 
         }
         .club-logo {
-            height: 60px; /* Precise size */
-            width: 60px;
+            height: 55px;
+            width: 55px;
             border-radius: 50%;
             border: 2px solid var(--accent-blue);
             filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
             object-fit: cover;
         }
 
-        /* --- Hero Layout --- */
+        /* --- Hero Content --- */
         .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px; }
 
         .universal-box {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            height: 110px; width: 280px;
+            height: 110px; width: 280px; /* Precise dimensions */
             display: flex; justify-content: center; align-items: center;
             padding: 15px; transition: transform 0.3s ease;
             margin: 0 auto;
@@ -87,11 +88,11 @@
         .universal-box.smart-theme { border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
         .sponsor-img { max-height: 80px; max-width: 85%; object-fit: contain; }
 
-        /* --- BRIGHTENED GLOBE & TITLE --- */
+        /* --- BRIGHTER TITLE & GLOBE --- */
         .main-title {
             font-size: clamp(2.8rem, 10vw, 8.5rem); font-weight: 900; line-height: 0.85; letter-spacing: -2px;
             display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(to bottom, #44e5ff, #0072ff); /* Bright cyan to blue gradient */
+            background: linear-gradient(to bottom, #44e5ff, #0072ff);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.4));
         }
@@ -100,12 +101,12 @@
             width: 0.82em; height: 0.82em; margin: 0 8px; border-radius: 50%; display: inline-block;
             position: relative; overflow: hidden; background-color: #1a3a5f;
             background-image: url('earth.png'); background-size: 210% 100%;
-            /* Brightened light for landmass visibility */
+            /* Brightened lighting for landmass visibility */
             box-shadow: 
-                inset -15px -15px 40px rgba(0,0,0,0.6), 
+                inset -15px -15px 40px rgba(0,0,0,0.5), 
                 inset 15px 15px 30px rgba(255,255,255,0.3),
                 0 0 30px rgba(0, 212, 255, 0.5);
-            animation: rotateGlobeRealistic 30s linear infinite;
+            animation: rotateGlobeRealistic 28s linear infinite;
             transform: translate3d(0,0,0);
         }
         @keyframes rotateGlobeRealistic { from { background-position: 0 0; } to { background-position: 210% 0; } }
@@ -113,7 +114,7 @@
         .slogan-container { width: 100%; display: flex; justify-content: flex-end; margin-top: 10px; max-width: 1000px; }
         .single-slogan { 
             color: var(--accent-green); font-weight: 900; text-transform: uppercase; 
-            font-size: clamp(0.7rem, 2.2vw, 1.4rem); font-style: italic; 
+            font-size: clamp(0.7rem, 2.2vw, 1.3rem); font-style: italic; 
             max-width: 450px; text-align: right; 
         }
 
@@ -123,21 +124,19 @@
         .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
 
         /* --- Event Description --- */
-        .event-section { padding: 80px 0; width: 100%; display: flex; justify-content: center; }
+        .event-section { padding: 60px 0; width: 100%; display: flex; justify-content: center; }
         .description-container {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 25px; padding: 45px; max-width: 900px; width: 100%;
-            display: flex; flex-direction: column; align-items: center;
+            border-radius: 20px; padding: 40px; max-width: 850px; width: 100%;
         }
-        .description-text { color: rgba(230, 241, 255, 0.9); font-size: 1rem; text-align: center; line-height: 1.8; }
+        .description-text { color: rgba(230, 241, 255, 0.85); font-size: 1rem; line-height: 1.8; text-align: center; }
 
-        /* --- Mobile Fixes --- */
         @media (max-width: 768px) {
             .hero { padding-top: 120px; }
             .header-nav { top: 15px; left: 15px; }
-            .club-logo { height: 50px; width: 50px; }
-            .presenter-section .universal-box { width: 210px; height: 85px; }
+            .club-logo { height: 48px; width: 48px; }
+            .presenter-section .universal-box { width: 210px; height: 85px; } /* Proportional scaling */
             .sponsors-grid { display: flex; flex-direction: column; align-items: center; gap: 40px; }
             .slogan-container { justify-content: center; }
             .single-slogan { text-align: center; }
@@ -158,7 +157,7 @@
     <main class="container hero">
         <div class="presenter-section">
             <div class="universal-box smart-theme"><img src="smart.png" alt="SMART" class="sponsor-img"></div>
-            <p style="font-size: 0.65rem; letter-spacing: 4px; margin: 10px 0; color: rgba(255,255,255,0.6); font-weight: 700;">PRESENTS</p>
+            <p style="font-size: 0.6rem; letter-spacing: 4px; margin: 10px 0; color: rgba(255,255,255,0.5); font-weight: 700;">PRESENTS</p>
         </div>
 
         <h1 class="main-title">INN<span class="spinning-globe"></span>VADE</h1>
@@ -173,10 +172,9 @@
 
     <section class="container event-section">
         <div class="description-container">
-            <h2 style="color:var(--accent-blue); margin-bottom: 25px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px;">Event Description</h2>
+            <h2 style="color:var(--accent-blue); margin-bottom: 25px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px; text-align: center;">Event Description</h2>
             <div class="description-text">
                 <p style="margin-bottom: 20px;">NSU MIBC proudly unveils the nation's first-ever International Business based case competition - Smart Technologies Presents INNOVADE 2026, Driven by Yamaha, Co-Sponsored by Polar, and Powered by NOVOAIR.</p>
-                <p style="margin-bottom: 20px;">Designed to push boundaries, INNOVADE 2026 immerses participants in real-world international business challenges, fostering strategic acumen and global leadership.</p>
                 <p style="font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 2px;">Your moment to INNOVADE is here.</p>
             </div>
         </div>
@@ -184,21 +182,20 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        var pCount = window.innerWidth < 768 ? 25 : 55;
+        // Detection for mobile count
+        var pCount = window.innerWidth < 768 ? 20 : 50;
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": pCount }, 
+                "number": { "value": pCount, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#ffffff" },
-                "opacity": { "value": 0.15 },
-                "size": { "value": 2 },
-                "line_linked": { "enable": true, "distance": 140, "color": "#00d4ff", "opacity": 0.15, "width": 1 },
-                "move": { "enable": true, "speed": 1 }
+                "opacity": { "value": 0.12, "random": false },
+                "size": { "value": 2, "random": true },
+                "line_linked": { "enable": true, "distance": 130, "color": "#00d4ff", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 0.8, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
             },
-            "interactivity": { "events": { "onhover": { "enable": false } } },
+            "interactivity": { "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } },
             "retina_detect": false
         });
     </script>
 </body>
 </html>
-
-
