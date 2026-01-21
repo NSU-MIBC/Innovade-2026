@@ -9,13 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy-dark: #0a192f;
+            --navy-dark: #0d1b2a; /* Slightly lighter base navy */
             --accent-blue: #00d4ff;
             --accent-green: #39ff14;
-            --text-white: #e6f1ff;
+            --text-white: #f0f5ff; /* Brighter white for text */
         }
 
-        /* Speed Boost: Prevent layout shifts */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
         body {
@@ -29,7 +28,7 @@
             align-items: center;
         }
 
-        /* --- Background Layers (Optimized for Mobile GPU) --- */
+        /* --- Background Layers (Enhanced Brightness) --- */
         .mesh-gradient {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -38,19 +37,20 @@
         }
 
         .blob {
-            position: absolute; width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-            filter: blur(50px); /* Reduced blur for performance */
+            position: absolute; width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            filter: blur(60px); 
             border-radius: 50%; 
             animation: moveBlobs 25s infinite alternate ease-in-out;
-            transform: translate3d(0,0,0); /* Forced hardware acceleration */
+            transform: translate3d(0,0,0);
         }
         .blob-1 { top: -10%; left: -10%; }
-        .blob-2 { bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(57, 255, 20, 0.05) 0%, transparent 70%); animation-duration: 35s; }
+        .blob-2 { bottom: -5%; right: -5%; background: radial-gradient(circle, rgba(57, 255, 20, 0.08) 0%, transparent 70%); animation-duration: 35s; }
+        .blob-3 { top: 30%; left: 20%; background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%); }
 
         @keyframes moveBlobs {
             from { transform: translate3d(0, 0, 0) scale(1); }
-            to { transform: translate3d(50px, 30px, 0) scale(1.1); }
+            to { transform: translate3d(60px, 40px, 0) scale(1.15); }
         }
 
         #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
@@ -60,41 +60,45 @@
         .club-logo {
             height: 60px; width: 60px; border-radius: 50%; object-fit: cover;
             border: 2px solid var(--accent-blue);
-            filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
         }
 
-        /* --- Hero Layout --- */
+        /* --- Layout --- */
         .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 60px; }
 
-        /* --- Sponsor Styling --- */
         .universal-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05); /* Brighter glass */
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             height: 110px; width: 280px;
             display: flex; justify-content: center; align-items: center;
-            padding: 15px; transition: transform 0.3s ease;
+            padding: 15px; transition: transform 0.3s ease, background 0.3s;
             margin: 0 auto;
         }
-        .universal-box.smart-theme { border-color: var(--accent-blue); box-shadow: 0 0 15px rgba(0, 212, 255, 0.15); }
+        .universal-box.smart-theme { border-color: var(--accent-blue); box-shadow: 0 0 18px rgba(0, 212, 255, 0.25); }
         .sponsor-img { max-height: 80px; max-width: 85%; object-fit: contain; }
 
-        /* --- Title & Slogan --- */
+        /* --- BRIGHTENED TITLE & GLOBE --- */
         .main-title {
             font-size: clamp(2.8rem, 10vw, 8.5rem); font-weight: 900; line-height: 0.85; letter-spacing: -2px;
             display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(to bottom, #00c6ff, #0072ff);
+            background: linear-gradient(to bottom, #44e5ff, #0072ff); /* Brighter Cyan Start */
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.2));
+            filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.4));
         }
 
         .spinning-globe {
             width: 0.82em; height: 0.82em; margin: 0 8px; border-radius: 50%; display: inline-block;
-            position: relative; overflow: hidden; background-color: #0d1b2a;
+            position: relative; overflow: hidden; 
+            background-color: #1a3a5f; /* Lighter ocean fallback */
             background-image: url('earth.png'); background-size: 210% 100%;
-            box-shadow: inset -15px -15px 30px rgba(0,0,0,0.8), inset 10px 10px 20px rgba(255,255,255,0.1);
-            animation: rotateGlobeRealistic 25s linear infinite; /* Slower = lighter on CPU */
+            /* Lightened Shadows for Visibility */
+            box-shadow: 
+                inset -15px -15px 40px rgba(0,0,0,0.6), 
+                inset 15px 15px 30px rgba(255,255,255,0.25),
+                0 0 30px rgba(0, 212, 255, 0.4); /* Stronger outer glow */
+            animation: rotateGlobeRealistic 25s linear infinite;
             transform: translate3d(0,0,0);
         }
         @keyframes rotateGlobeRealistic { from { background-position: 0 0; } to { background-position: 210% 0; } }
@@ -102,38 +106,40 @@
         .slogan-container { width: 100%; display: flex; justify-content: flex-end; margin-top: 8px; max-width: 1000px; }
         .single-slogan { color: var(--accent-green); font-weight: 900; text-transform: uppercase; font-size: clamp(0.7rem, 2vw, 1.3rem); font-style: italic; max-width: 450px; text-align: right; }
 
-        /* --- Sponsors Grid --- */
-        .sponsors-grid { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; width: 100%; }
+        /* --- Grid --- */
+        .sponsors-grid { margin-top: 35px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; width: 100%; }
         .sponsor-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .label-text { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.3); margin-bottom: 10px; }
+        .label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
 
-        /* --- Event Description --- */
-        .event-section { padding: 50px 0; width: 100%; display: flex; justify-content: center; }
+        /* --- Description Section --- */
+        .event-section { padding: 60px 0; width: 100%; display: flex; justify-content: center; }
         .description-container {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px; padding: 35px; max-width: 850px; width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px; padding: 40px; max-width: 850px; width: 100%;
             display: flex; flex-direction: column; align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         .section-title { font-size: clamp(1.4rem, 4vw, 1.8rem); color: var(--accent-blue); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 900; }
-        .description-text { color: rgba(230, 241, 255, 0.7); font-size: clamp(0.85rem, 2vw, 1rem); text-align: center; }
+        .description-text { color: rgba(230, 241, 255, 0.85); font-size: clamp(0.85rem, 2vw, 1rem); text-align: center; }
 
-        /* --- Mobile Fixes --- */
         @media (max-width: 768px) {
             .hero { padding-top: 100px; }
-            .presenter-section .universal-box { width: 200px; height: 80px; }
-            .presenter-section .sponsor-img { max-height: 50px; }
-            .sponsors-grid { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+            .presenter-section .universal-box { width: 210px; height: 82px; }
+            .presenter-section .sponsor-img { max-height: 52px; }
+            .sponsors-grid { display: flex; flex-direction: column; align-items: center; gap: 35px; }
             .slogan-container { justify-content: center; }
             .single-slogan { text-align: center; }
-            .universal-box { width: 100%; max-width: 260px; }
+            .universal-box { width: 100%; max-width: 270px; }
         }
     </style>
 </head>
 <body>
 
     <div class="mesh-gradient">
-        <div class="blob blob-1"></div><div class="blob blob-2"></div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
     <div id="particles-js"></div>
 
@@ -146,7 +152,7 @@
             <div class="universal-box smart-theme">
                 <img src="smart.png" alt="SMART" class="sponsor-img">
             </div>
-            <p style="font-size: 0.6rem; letter-spacing: 3px; margin: 8px 0; color: rgba(255,255,255,0.5);">PRESENTS</p>
+            <p style="font-size: 0.65rem; letter-spacing: 4px; margin: 10px 0; color: rgba(255,255,255,0.6); font-weight: 700;">PRESENTS</p>
         </div>
 
         <h1 class="main-title">INN<span class="spinning-globe"></span>VADE</h1>
@@ -156,9 +162,18 @@
         </div>
 
         <div class="sponsors-grid">
-            <div class="sponsor-item"><p class="label-text">Driven By</p><div class="universal-box"><img src="Yamaha.png" class="sponsor-img"></div></div>
-            <div class="sponsor-item"><p class="label-text">Co-Powered By</p><div class="universal-box"><img src="polar.png" class="sponsor-img"></div></div>
-            <div class="sponsor-item"><p class="label-text">Powered By</p><div class="universal-box"><img src="NOVOAIRlog.png" class="sponsor-img"></div></div>
+            <div class="sponsor-item">
+                <p class="label-text">Driven By</p>
+                <div class="universal-box"><img src="Yamaha.png" class="sponsor-img"></div>
+            </div>
+            <div class="sponsor-item">
+                <p class="label-text">Co-Powered By</p>
+                <div class="universal-box"><img src="polar.png" class="sponsor-img"></div>
+            </div>
+            <div class="sponsor-item">
+                <p class="label-text">Powered By</p>
+                <div class="universal-box"><img src="NOVOAIRlog.png" class="sponsor-img"></div>
+            </div>
         </div>
     </main>
 
@@ -166,28 +181,27 @@
         <div class="description-container">
             <h2 class="section-title">Event Description</h2>
             <div class="description-text">
-                <p style="margin-bottom: 15px;">NSU MIBC proudly unveils the nation's first-ever International Business based case competition - Smart Technologies Presents INNOVADE 2026, Driven by Yamaha, Co-Sponsored by Polar, and Powered by NOVOAIR.</p>
-                <p style="margin-bottom: 15px;">This rigorous international business problem-solving contest impels participants to confront real world business predicaments, craft prudent solutions, and think beyond boundaries.</p>
-                <p style="font-weight: 700; color: #fff;">Your moment to INNOVADE is here.</p>
+                <p style="margin-bottom: 18px;">NSU MIBC proudly unveils the nation's first-ever International Business based case competition - Smart Technologies Presents INNOVADE 2026, Driven by Yamaha, Co-Sponsored by Polar, and Powered by NOVOAIR.</p>
+                <p style="margin-bottom: 18px;">This rigorous international business problem-solving contest impels participants to confront real world business predicaments, craft prudent solutions, and think beyond boundaries.</p>
+                <p style="font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 2px;">Your moment to INNOVADE is here.</p>
             </div>
         </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Optimized Particle count for mobile
-        var pCount = window.innerWidth < 768 ? 30 : 60;
+        var pCount = window.innerWidth < 768 ? 25 : 55;
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": pCount }, 
                 "color": { "value": "#ffffff" },
-                "opacity": { "value": 0.1 },
+                "opacity": { "value": 0.12 },
                 "size": { "value": 2 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#00d4ff", "opacity": 0.1, "width": 1 },
+                "line_linked": { "enable": true, "distance": 140, "color": "#00d4ff", "opacity": 0.12, "width": 1 },
                 "move": { "enable": true, "speed": 1 }
             },
             "interactivity": { "events": { "onhover": { "enable": false } } },
-            "retina_detect": false // Disabled for speed
+            "retina_detect": false
         });
     </script>
 </body>
