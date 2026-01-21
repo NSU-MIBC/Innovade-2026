@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMART Presents INNOVADE | MIBC</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -55,7 +58,7 @@
 
         #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
-        /* --- HEADER NAVIGATION (Logo Left, Register Right) --- */
+        /* --- HEADER NAVIGATION (Globe Logo Left, Register Right) --- */
         .header-nav { 
             position: fixed; 
             top: 20px; 
@@ -101,7 +104,6 @@
         .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px; }
 
-        /* --- SPONSOR BOXES WITH POP EFFECT --- */
         .universal-box {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -144,12 +146,10 @@
         @keyframes rotateGlobeRealistic { from { background-position: 0 0; } to { background-position: 210% 0; } }
 
         .slogan-container { width: 100%; display: flex; justify-content: flex-end; margin-top: 10px; max-width: 1000px; }
-        
-        /* --- FIXED SLOGAN: Shifted to start at 'V' and end at 'E' --- */
         .single-slogan { 
             color: var(--accent-green); font-weight: 900; text-transform: uppercase; 
             font-size: clamp(0.7rem, 2.2vw, 1.3rem); font-style: italic; 
-            margin-right: 8%; /* Added margin to push the start of spelling to the 'V' */
+            margin-right: 8%;
             text-align: right; 
         }
 
@@ -189,7 +189,7 @@
     <div id="particles-js"></div>
 
     <nav class="header-nav">
-        <img src="mibclog.jpg" alt="MIBC Logo" class="club-logo">
+        <img src="earth.png" alt="Globe Logo" class="club-logo">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSee8JCBmofFXPm8zYgYMsdQpACtCFi9mDnEDrDxFH3by1IFpA/viewform?usp=header" target="_blank" class="btn-register">
             Register Now
         </a>
@@ -207,7 +207,7 @@
         <div class="sponsors-grid">
             <div class="sponsor-item"><p class="label-text">Driven By</p><div class="universal-box"><img src="Yamaha.png" class="sponsor-img"></div></div>
             <div class="sponsor-item"><p class="label-text">Co-Sponsored By</p><div class="universal-box"><img src="polar.png" class="sponsor-img"></div></div>
-            <div class="sponsor-item"><p class="label-text">Powered By</p><div class="universal-box"><img src="NOVOAIRlog.png" class="sponsor-img"></div></div>
+            <div class="sponsor-item"><p class="label-text) ">Powered By</p><div class="universal-box"><img src="NOVOAIRlog.png" class="sponsor-img"></div></div>
         </div>
     </main>
 
@@ -224,7 +224,6 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        /* --- INCREASED PARTICLE DENSITY --- */
         var pCount = window.innerWidth < 768 ? 45 : 110; 
         particlesJS("particles-js", {
             "particles": {
