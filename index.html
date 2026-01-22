@@ -59,7 +59,7 @@
 
         #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
-        /* --- HEADER NAVIGATION (MIBC Logo Left, Register Right) --- */
+        /* --- HEADER NAVIGATION --- */
         .header-nav { 
             position: fixed; 
             top: 20px; 
@@ -184,11 +184,41 @@
         .prize-img { max-width: 100%; height: auto; filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.2)); margin-top: 20px; }
 
         /* --- Rounds Section --- */
-        .rounds-section { padding: 40px 0 100px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        .rounds-section { padding: 40px 0 20px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 40px; }
         
         .round-box { opacity: 0; transition: all 0.8s ease-out; }
         .round-box h3 { color: var(--accent-blue); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 900; }
         .round-box p { color: rgba(230, 241, 255, 0.8); line-height: 1.6; font-size: 0.95rem; }
+
+        /* --- FINAL TAP BUTTON --- */
+        .final-register-section {
+            padding: 40px 0 120px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-tap-register {
+            background: linear-gradient(135deg, #0072ff, var(--accent-blue));
+            color: #fff;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 3px;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+            white-space: nowrap;
+            opacity: 0;
+        }
+
+        .btn-tap-register:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.6);
+            letter-spacing: 5px;
+        }
 
         /* Animations */
         .fade-left { transform: translateX(-60px); }
@@ -202,6 +232,7 @@
             .header-nav { top: 15px; left: 15px; right: 15px; }
             .club-logo { height: 45px; width: 45px; }
             .btn-register { padding: 8px 15px; font-size: 0.7rem; letter-spacing: 1px; }
+            .btn-tap-register { padding: 15px 30px; font-size: 1rem; letter-spacing: 2px; }
             .presenter-section .universal-box { width: 210px; height: 85px; } 
             .sponsors-grid { display: flex; flex-direction: column; align-items: center; gap: 40px; }
             .slogan-container { justify-content: center; }
@@ -276,6 +307,12 @@
             <h3>Final Round: GlobalPitch</h3>
             <p>Finalist teams deliver high-impact live presentations, defending innovative global strategies before a panel of industry experts.</p>
         </div>
+    </section>
+
+    <section class="final-register-section">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSee8JCBmofFXPm8zYgYMsdQpACtCFi9mDnEDrDxFH3by1IFpA/viewform" target="_blank" class="btn-tap-register scroll-trigger fade-bottom">
+            TAP TO REGISTER
+        </a>
     </section>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
