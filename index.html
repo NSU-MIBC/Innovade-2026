@@ -104,6 +104,7 @@
         .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px; }
 
+        /* --- SPONSOR BOXES WITH POP EFFECT --- */
         .universal-box {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -167,6 +168,30 @@
         }
         .description-text { color: rgba(230, 241, 255, 0.85); font-size: 1rem; line-height: 1.8; text-align: center; }
 
+        /* --- ROUNDS SECTION (MINIMALIST TASK) --- */
+        .rounds-section { padding-bottom: 100px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        
+        .round-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; padding: 35px; max-width: 850px; width: 90%;
+            transition: all 0.8s ease-out;
+            opacity: 0; /* Initially hidden */
+        }
+
+        .round-box h3 { color: var(--accent-blue); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 900; }
+        .round-box p { color: rgba(230, 241, 255, 0.8); line-height: 1.6; font-size: 0.95rem; }
+
+        /* Animation States */
+        .fade-left { transform: translateX(-60px); }
+        .fade-right { transform: translateX(60px); }
+        .fade-bottom { transform: translateY(60px); }
+
+        .reveal-visible {
+            opacity: 1 !important;
+            transform: translate(0, 0) !important;
+        }
+
         @media (max-width: 768px) {
             .hero { padding-top: 120px; }
             .header-nav { top: 15px; left: 15px; right: 15px; }
@@ -177,6 +202,7 @@
             .slogan-container { justify-content: center; }
             .single-slogan { text-align: center; margin-right: 0; }
             .universal-box { width: 100%; max-width: 270px; }
+            .round-box { width: 95%; padding: 25px; }
         }
     </style>
 </head>
@@ -222,6 +248,23 @@
         </div>
     </section>
 
+    <section class="container rounds-section">
+        <div class="round-box fade-left scroll-trigger">
+            <h3>Round 1: TradeForge</h3>
+            <p>An online international business case-solving round where teams analyze real-world global challenges and propose strategic, data-driven solutions.</p>
+        </div>
+
+        <div class="round-box fade-right scroll-trigger">
+            <h3>Semi-Final: PolicyCraft</h3>
+            <p>Shortlisted teams design and present strategic policy-driven solutions through a professional poster, addressing global business and regulatory challenges.</p>
+        </div>
+
+        <div class="round-box fade-bottom scroll-trigger">
+            <h3>Tentative Final Round: GlobalPitch</h3>
+            <p>Finalist teams deliver high-impact live presentations, defending innovative global strategies before a panel of industry experts.</p>
+        </div>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         var pCount = window.innerWidth < 768 ? 45 : 110; 
@@ -236,6 +279,20 @@
             },
             "interactivity": { "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } },
             "retina_detect": false
+        });
+
+        /* --- Scroll Reveal Logic --- */
+        const observerOptions = { threshold: 0.2 };
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-trigger').forEach(box => {
+            revealObserver.observe(box);
         });
     </script>
 </body>
