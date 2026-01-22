@@ -15,7 +15,7 @@
             --navy-dark: #0d1b2a;
             --accent-blue: #00d4ff;
             --accent-green: #39ff14;
-            --accent-gold: #ffd700; /* New Gold Accent for Prize Pool */
+            --accent-gold: #ffd700;
             --text-white: #f0f5ff;
         }
 
@@ -59,7 +59,7 @@
 
         #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
-        /* --- HEADER NAVIGATION --- */
+        /* --- HEADER NAVIGATION (MIBC Logo Left, Register Right) --- */
         .header-nav { 
             position: fixed; 
             top: 20px; 
@@ -81,9 +81,7 @@
             transition: transform 0.3s ease;
         }
 
-        .club-logo:hover {
-            transform: scale(1.1);
-        }
+        .club-logo:hover { transform: scale(1.1); }
 
         .btn-register {
             background: linear-gradient(135deg, var(--accent-blue), #0072ff);
@@ -174,30 +172,21 @@
             text-align: center;
         }
 
-        /* --- FINAL TOUCH: PRIZE POOL BOX --- */
+        /* --- Prize Pool Glow --- */
         .prize-container {
             border-color: rgba(255, 215, 0, 0.3);
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
             transition: all 1s ease-out;
             opacity: 0;
-            transform: scale(0.95); /* Fade-in from within effect */
+            transform: scale(0.95);
         }
         
-        .prize-img {
-            max-width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
-            margin-top: 20px;
-        }
+        .prize-img { max-width: 100%; height: auto; filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.2)); margin-top: 20px; }
 
         /* --- Rounds Section --- */
         .rounds-section { padding: 40px 0 100px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 40px; }
         
-        .round-box {
-            opacity: 0;
-            transition: all 0.8s ease-out;
-        }
-
+        .round-box { opacity: 0; transition: all 0.8s ease-out; }
         .round-box h3 { color: var(--accent-blue); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 900; }
         .round-box p { color: rgba(230, 241, 255, 0.8); line-height: 1.6; font-size: 0.95rem; }
 
@@ -206,10 +195,7 @@
         .fade-right { transform: translateX(60px); }
         .fade-bottom { transform: translateY(60px); }
         
-        .reveal-visible {
-            opacity: 1 !important;
-            transform: translate(0, 0) scale(1) !important;
-        }
+        .reveal-visible { opacity: 1 !important; transform: translate(0, 0) scale(1) !important; }
 
         @media (max-width: 768px) {
             .hero { padding-top: 120px; }
@@ -259,10 +245,12 @@
 
     <section class="container event-section">
         <div class="description-container">
-            <h2 style="color:var(--accent-blue); margin-bottom: 25px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px;">Event Description</h2>
-            <p style="color: rgba(230,241,255,0.85); font-size: 1rem; line-height: 1.8;">
-                NSU MIBC proudly unveils the nation's first-ever International Business based case competition - Smart Technologies Presents INNOVADE 2026.
-            </p>
+            <h2 style="color:var(--accent-blue); margin-bottom: 25px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px; text-align: center;">Event Description</h2>
+            <div style="color: rgba(230,241,255,0.85); font-size: 1rem; line-height: 1.8; text-align: center;">
+                <p style="margin-bottom: 20px;">NSU MIBC proudly unveils the nation's first-ever International Business based case competition - Smart Technologies Presents INNOVADE 2026, Driven by Yamaha, Co-Sponsored by Polar Ice Cream, and Powered by NOVOAIR.</p>
+                <p style="margin-bottom: 20px;">Designed to push boundaries, INNOVADE 2026 immerses participants in real-world international business challenges, fostering strategic acumen and global leadership.</p>
+                <p style="font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 2px;">Your moment to INNOVADE is here.</p>
+            </div>
         </div>
     </section>
 
@@ -306,7 +294,6 @@
             "retina_detect": false
         });
 
-        /* --- Scroll Reveal Logic --- */
         const observerOptions = { threshold: 0.15 };
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -316,9 +303,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.scroll-trigger').forEach(box => {
-            revealObserver.observe(box);
-        });
+        document.querySelectorAll('.scroll-trigger').forEach(box => { revealObserver.observe(box); });
     </script>
 </body>
 </html>
